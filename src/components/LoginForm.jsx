@@ -11,7 +11,6 @@ import FormButton from './common/FormButton';
 
 function LoginForm () {
     const navigate = useNavigate()
-    const { state } = useLocation()
     const { loginUser } = useContext(UserContext)
 
     const dataInit = {

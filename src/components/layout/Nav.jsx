@@ -5,9 +5,10 @@ import { NavLink } from "react-router-dom"
 function Nav () {
     const { currentUser, logoutUser } = useContext(UserContext)
     const menuLinks = [
-        { name: 'Users', url: '/users' },
         { name: 'Options', url: '/options' }
     ]
+
+    const adminLinks = [{ name: 'Users', url: '/users' }]
 
     const renderAuth = () => {
         const items = [
@@ -31,7 +32,7 @@ function Nav () {
         return (
             <li className="flex items-center ml-4">
                 <div className="h-8 w-8 rounded-full bg-green-400"></div>
-                <div className="flex ml-2">{ currentUser.first_name }</div>
+                <div className="flex ml-2">{ currentUser.user }</div>
                 <button onClick={ logoutUser } className="ml-4 button action-button">Logout</button>
             </li>
         )
@@ -43,7 +44,18 @@ function Nav () {
                 <div className="font-black">BALEARES APP</div>
                 <div className="menu-wrapper">
                     <ul className="menu">
-                        {  menuLinks.map(link => 
+                        { currentUser?.isAdmin && adminLinks.map(link => 
+                            <li className="flex" key={ link.name }>
+                                <NavLink 
+                                    className="menu-link" 
+                                    to={ link.url }>
+                                        { link.name }
+                                </NavLink>
+                            </li>    
+                        )}
+                    </ul>
+                    <ul className="menu">
+                        { currentUser && menuLinks.map(link => 
                             <li className="flex" key={ link.name }>
                                 <NavLink 
                                     className="menu-link" 

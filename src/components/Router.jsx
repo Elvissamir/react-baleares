@@ -1,13 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import Options from './OptionsPage';
+import OptionsPage from './OptionsPage';
+import UsersPage from './UsersPage';
 
 function Router() {
     return (
         <Routes>
             <Route path='/login' element={<LoginForm />} />
-            <Route path='/options' element={< Options />} />
-            <Router path='/users' element={<Users />} />
+            <Route path='/options' element={< OptionsPage />} />
+            <Route path='/users' element={<UsersPage />} />
         </Routes>
     )
 }

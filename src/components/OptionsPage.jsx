@@ -1,6 +1,10 @@
 
-function Options () {
-    return <p>Options</p>
+function OptionsPage () {
+    return (
+        <div className="content-wrapper">
+            <p>Options page</p>
+        </div>
+    )
 }
 
-export default Options
+export default OptionsPage
