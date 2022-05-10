@@ -4,6 +4,8 @@ import OptionsPage from './OptionsPage';
 import RequireAuth from './RequireAuth';
 import UsersPage from './UsersPage';
 import routes from '../routes';
+import NotFound from './NotFound';
+import Forbidden from './Forbidden';
 
 function Router() {
     return (
@@ -17,6 +19,8 @@ function Router() {
                         <OptionsPage />
                 </RequireAuth>} />
             <Route path={routes.admin.users.url} element={<UsersPage />} />
+            <Route path='/forbidden' element={ <Forbidden /> } />
+            <Route path='*' element={ <NotFound /> } />
         </Routes>
     )
 }
