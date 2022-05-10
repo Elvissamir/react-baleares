@@ -6,6 +6,7 @@ import FormFooter from './common/FormFooter';
 import FormButton from './common/FormButton';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import imageService from '../services/imageService';
 
 function ImageForm () {
     const navigate = useNavigate()
@@ -20,6 +21,7 @@ function ImageForm () {
 
     const { 
         formData, 
+        setFormData,
         formErrors, 
         setFormErrors,
         validate, 
@@ -39,8 +41,11 @@ function ImageForm () {
             console.log(formData)
 
             // send request
+            const result = await imageService.upload(formData)
+            console.log(result)
 
-            // navigate('/options', { replace: true })
+            setFile(null)
+            setFormData(dataInit)
         } 
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
@@ -53,7 +58,6 @@ function ImageForm () {
 
     return (
         <div className="content-wrapper">
-            <p>Options page</p>
             <div className="mt-5">
                 <Form size='w-6/12' title='Image Upload' handleSubmit={ handleSubmit }>
                     <InputField 
@@ -67,7 +71,7 @@ function ImageForm () {
                     <input type="file" name='image' onChange={handleImageChange} />
 
                     <FormFooter>
-                        <FormButton text='Login' validate={ validate } />
+                        <FormButton text='Upload' validate={ validate } />
                     </FormFooter>
                 </Form>
             </div>

@@ -6,6 +6,7 @@ import UsersPage from './UsersPage';
 import routes from '../routes';
 import NotFound from './NotFound';
 import Forbidden from './Forbidden';
+import ImageForm from './ImageForm';
 
 function Router() {
     return (
@@ -15,8 +16,15 @@ function Router() {
                 <RequireAuth 
                     redirectTo={routes.general.login.url} 
                     destination={routes.auth.options.url}
-                    admin={true}>
+                    admin={false}>
                         <OptionsPage />
+                </RequireAuth>} />
+            <Route path={routes.auth.uploadImage.url} element={
+                <RequireAuth 
+                    redirectTo={routes.general.login.url}
+                    destination={routes.auth.uploadImage.url}
+                    admin={false}>
+                    <ImageForm />
                 </RequireAuth>} />
             <Route path={routes.admin.users.url} element={<UsersPage />} />
             <Route path='/forbidden' element={ <Forbidden /> } />

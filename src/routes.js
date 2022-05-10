@@ -3,7 +3,8 @@ const general = {
 }
 
 const auth = {
-    options: { name: 'Options', url: '/options' }
+    options: { name: 'Options', url: '/options' },
+    uploadImage: { name: 'Upload Image', url: '/upload' }
 }
 
 const admin = {
