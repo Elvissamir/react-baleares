@@ -6,7 +6,6 @@ import FormFooter from './common/FormFooter';
 import FormButton from './common/FormButton';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import axios from 'axios';
 
 function ImageForm () {
     const navigate = useNavigate()
@@ -39,16 +38,7 @@ function ImageForm () {
             formData.image = file
             console.log(formData)
 
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data'
-                }
-            }
-
-            axios
-                .post('http://localhost:3001/api/images', formData, config)
-                .then(response => console.log(response))
-                .catch(err => console.log(err))
+            // send request
 
             // navigate('/options', { replace: true })
         } 
