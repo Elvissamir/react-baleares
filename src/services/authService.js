@@ -19,9 +19,6 @@ const login = (token) => {
     localStorage.setItem(tokenKey, token)
 }
 
-export default { 
-    getJwt,
-    getJwtData,
-    login,
-    logout,
-}
+const authService = {getJwt, getJwtData, login, logout}
+
+export default authService
