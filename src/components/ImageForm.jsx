@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-function OptionsPage () {
+function ImageForm () {
     const navigate = useNavigate()
 
     const dataInit = {
@@ -36,7 +36,6 @@ function OptionsPage () {
         e.preventDefault()
 
         try {
-            console.log(formData)
             formData.image = file
             console.log(formData)
 
@@ -86,4 +85,4 @@ function OptionsPage () {
     )
 }
 
-export default OptionsPage
+export default ImageForm
