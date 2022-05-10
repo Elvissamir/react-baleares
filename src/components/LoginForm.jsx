@@ -46,7 +46,6 @@ function LoginForm () {
                 const errors = {...formErrors}
                 errors.email = ex.response.data
                 setFormErrors(errors)
-                toast.error(`${ex.response.status} ${ex.response.data}`)
             }
         }
     }

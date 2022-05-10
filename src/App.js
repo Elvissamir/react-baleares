@@ -1,7 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import useUser from './components/hooks/useUser';
+import { UserContext } from './components/context/userContext';
+import { useEffect } from 'react'
+import Nav from './components/Nav'
+import Footer from './components/Footer.jsx'
+import LoginForm from './components/LoginForm';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
+  const { 
+    currentUser, 
+    setCurrentUser, 
+    setCurrentUserFromToken, 
+    logoutUser, 
+    loginUser } = useUser() 
+
+  useEffect(() => {
+    setCurrentUserFromToken()
+  }, [])
+
   return (
     <div className="App">
        <div className='app-container'>
