@@ -1,22 +1,18 @@
 import { useContext } from "react"
 import { UserContext } from "../context/userContext"
 import { NavLink } from "react-router-dom"
+import routes from "../../routes"
 
 function Nav () {
     const { currentUser, logoutUser } = useContext(UserContext)
-    const menuLinks = [
-        { name: 'Options', url: '/options' }
-    ]
-
-    const adminLinks = [{ name: 'Users', url: '/users' }]
+    
+    const menuLinks = routes.getAuthArr()
+    const adminLinks = routes.getAdminArr()
+    const generalLinks = routes.getGeneralArr()
 
     const renderAuth = () => {
-        const items = [
-            { name: 'Login', url: '/login'},
-        ]
-
         return (
-            items.map(item =>      
+            generalLinks.map(item =>      
                 <li className="flex" key={ item.name }>
                     <NavLink 
                         className="menu-link" 
