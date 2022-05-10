@@ -1,8 +1,7 @@
-import config from '../config.json'
 import httpService from "./httpService"
 
-const usersEndpoint = `${config.apiUrl}/users`
-const loginEndpoint = `${config.apiUrl}/login`
+const usersEndpoint = `${process.env.REACT_APP_API_URL}/users`
+const loginEndpoint = `${process.env.REACT_APP_API_URL}/login`
 
 function register (user) {
     return httpService.post(usersEndpoint, user)
