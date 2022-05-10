@@ -24,8 +24,6 @@ function LoginForm () {
         password: Joi.string().required().label('Password')
     }
 
-    console.log(dataSchema)
-
     const { 
         formData, 
         formErrors, 
@@ -39,16 +37,15 @@ function LoginForm () {
 
         try {
             const {data: jwt } = await login(formData)
-            console.log(jwt)
 
             loginUser(jwt)
-            navigate(state, { replace: true })
+            navigate('/options', { replace: true })
         } 
            
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = {...formErrors}
-                errors.username = ex.response.data
+                errors.user = ex.response.data
                 setFormErrors(errors)
             }
         }

@@ -40,7 +40,7 @@ function Nav () {
     return (
         <nav className="nav">
             <div className="nav-content">
-                <div className="font-black">V MOVIES</div>
+                <div className="font-black">BALEARES APP</div>
                 <div className="menu-wrapper">
                     <ul className="menu">
                         {  menuLinks.map(link => 
