@@ -7,8 +7,8 @@ function register (user) {
     return httpService.post(usersEndpoint, user)
 }
 
-function login ({ email, password }) {
-    return httpService.post(`${loginEndpoint}`, { email, password })
+function login ({ user, password }) {
+    return httpService.post(`${loginEndpoint}`, { user, password })
 }
 
 export {

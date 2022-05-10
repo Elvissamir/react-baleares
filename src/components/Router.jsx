@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Nav from './Nav';
+import LoginForm from './LoginForm';
 
 function Router() {
     return (
         <Routes>
-            <Route></Route>
+            <Route path='/login' element={<LoginForm />} />
         </Routes>
     )
 }

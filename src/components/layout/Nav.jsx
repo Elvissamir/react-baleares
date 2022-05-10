@@ -1,19 +1,17 @@
 import { useContext } from "react"
-import { UserContext } from "./context/userContext"
+import { UserContext } from "../context/userContext"
 import { NavLink } from "react-router-dom"
 
 function Nav () {
     const { currentUser, logoutUser } = useContext(UserContext)
     const menuLinks = [
-        { name: 'Movies', url: '/movies' },
-        { name: 'Rentals', url: '/rentals' },
-        { name: 'Customers', url: '/customers' }
+        { name: 'Users', url: '/users' },
+        { name: 'Options', url: '/options' }
     ]
 
     const renderAuth = () => {
         const items = [
             { name: 'Login', url: '/login'},
-            { name: 'Register', url: '/register'},
         ]
 
         return (

@@ -15,14 +15,16 @@ function LoginForm () {
     const { loginUser } = useContext(UserContext)
 
     const dataInit = {
-        email: '',
+        user: '',
         password: ''
     }
 
     const dataSchema = {
-        email: Joi.string().email({ tlds: {allow: false} }).required().label('Email'),
-        password: Joi.string().min(6).required().label('Password')
+        user: Joi.string().required().label('User'),
+        password: Joi.string().required().label('Password')
     }
+
+    console.log(dataSchema)
 
     const { 
         formData, 
@@ -37,6 +39,8 @@ function LoginForm () {
 
         try {
             const {data: jwt } = await login(formData)
+            console.log(jwt)
+
             loginUser(jwt)
             navigate(state, { replace: true })
         } 
@@ -44,7 +48,7 @@ function LoginForm () {
         catch (ex) {
             if (ex.response && ex.response.status === 400) {
                 const errors = {...formErrors}
-                errors.email = ex.response.data
+                errors.username = ex.response.data
                 setFormErrors(errors)
             }
         }
@@ -53,11 +57,11 @@ function LoginForm () {
     return (
         <Form size='w-6/12' title='Login' handleSubmit={ handleSubmit }>
             <InputField 
-                label='Email'
-                id='email'
+                label='User'
+                id='user'
                 type='text'
-                value={ formData.email }
-                error={ formErrors.email }
+                value={ formData.user }
+                error={ formErrors.user }
                 handleChange={ handleChange } />
             <InputField 
                 label='Password'
