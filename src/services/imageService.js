@@ -16,6 +16,10 @@ const getImages = user => {
     return httpService.get(imagesEndpoint, user)
 }
 
-const imageService = {upload, getImages}
+const deleteImage = imageName => {
+    return httpService.delete(imagesEndpoint, { data: { imageName } })
+}
+
+const imageService = {upload, getImages, deleteImage}
 
 export default imageService
