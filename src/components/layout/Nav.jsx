@@ -6,9 +6,9 @@ import routes from "../../routes"
 function Nav () {
     const { currentUser, logoutUser } = useContext(UserContext)
     
-    const menuLinks = routes.getAuthArr()
-    const adminLinks = routes.getAdminArr()
-    const generalLinks = routes.getGeneralArr()
+    const menuLinks = [routes.auth.options]
+    const adminLinks = [routes.admin.users]
+    const generalLinks = [routes.general.login]
 
     const renderAuth = () => {
         return (

@@ -3,11 +3,13 @@ import { useContext } from "react"
 import { UserContext } from "./context/userContext"
 import { NavLink } from 'react-router-dom';
 import imageService from '../services/imageService';
+import authService from '../services/authService'
 import routes from '../routes';
 
 function OptionsPage () {
     const { currentUser } = useContext(UserContext)
     const [images, setImages] = useState([])
+    const jwt = authService.getJwt()
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -20,12 +22,10 @@ function OptionsPage () {
 
     const handleDelete = async (image, index) => {
         try {
-            console.log(index)
             const contentUrl = image.split('/') 
             const imageName = contentUrl[contentUrl.length - 1]
 
             const result = await imageService.deleteImage(imageName) 
-            console.log('the result', result)
 
             const newImages = [...images]
             newImages.splice(index, 1)
@@ -49,7 +49,7 @@ function OptionsPage () {
                 <div className='flex mt-3'>
                     {images.map((image, index) => 
                         <div key={image} className='flex-col mr-3 w-full'>
-                            <img className='w-52 h-28 mr-5' crossOrigin="anonymous" src={process.env.REACT_APP_API_URL+image} alt="" />
+                            <img className='w-52 h-28 mr-5' crossOrigin='anonymous' src={process.env.REACT_APP_API_URL+image+'?token='+jwt} alt="" />
                             <button className='p-2 mt-2 text-white bg-red-500 rounded-sm' onClick={() => handleDelete(image, index)}>Delete</button>
                         </div>
                     )}

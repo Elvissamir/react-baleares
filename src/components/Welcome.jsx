@@ -25,7 +25,7 @@ function Welcome () {
                 </div>)
         }
         else 
-            <p>Are you having a good time? :D</p>
+            return <p className='text-lg mx-auto text-center mt-5'>Are you having a good time? :D</p>
     }
 
     return (

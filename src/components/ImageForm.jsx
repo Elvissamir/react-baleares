@@ -7,6 +7,7 @@ import FormButton from './common/FormButton';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import imageService from '../services/imageService';
+import routes from '../routes';
 
 function ImageForm () {
     const navigate = useNavigate()
@@ -38,21 +39,13 @@ function ImageForm () {
 
         try {
             formData.image = file
-            console.log(formData)
+            await imageService.upload(formData)
 
-            // send request
-            const result = await imageService.upload(formData)
-            console.log(result)
-
-            setFile(null)
-            setFormData(dataInit)
+            navigate(routes.auth.options.url, { replace: true })
         } 
         catch (ex) {
-            if (ex.response && ex.response.status === 400) {
-                const errors = {...formErrors}
-                errors.user = ex.response.data
-                setFormErrors(errors)
-            }
+            console.log(ex)
+            setFormData(dataInit)
         }
     }
 
