@@ -3,20 +3,25 @@ import httpService from "./httpService"
 const usersEndpoint = `${process.env.REACT_APP_API_URL}/users`
 const loginEndpoint = `${process.env.REACT_APP_API_URL}/login`
 
-function register (user) {
+const register = (user) => {
     return httpService.post(usersEndpoint, user)
 }
 
-function login ({ user, password }) {
+const login = ({ user, password }) => {
     return httpService.post(loginEndpoint, { user, password })
 }
 
-function getUsers () {
+const getUsers = () => {
     return httpService.get(usersEndpoint)
+}
+
+const deleteUser = userName => {
+    return httpService.delete(`${usersEndpoint}/${{userName}}`)
 }
 
 export {
     register,
     login,
-    getUsers
+    getUsers,
+    deleteUser
 }
