@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getUsers, deleteUser } from '../services/usersService'
 import { NavLink } from 'react-router-dom';
+import routes from '../routes';
 
 function UsersPage () {
 
@@ -32,9 +33,16 @@ function UsersPage () {
     return (
         <div className="content-wrapper">
             <div className='mx-auto w-1/2'>
-                <p className="title">Users</p>
+                <div className='flex justify-between w-full'>
+                    <p className="title">Users</p>
+                    <NavLink 
+                        className='action-button button'  
+                        to={routes.admin.createUser.url}>
+                            {routes.admin.createUser.name}
+                    </NavLink>
+                </div>
                 <div className="w-full mt-4 mx-auto">
-                    <table>
+                    <table className='w-full'>
                         <thead>
                             <tr>
                                 {tableCols.map(col => 
