@@ -42,16 +42,12 @@ function LoginForm () {
         } 
            
         catch (ex) {
-            if (ex.response && ex.response.status === 400) {
-                const errors = {...formErrors}
-                errors.user = ex.response.data
-                setFormErrors(errors)
-            }
+           navigate('/notfound', { replace: true })
         }
     }
 
     return (
-        <Form size='w-6/12' title='Login' handleSubmit={ handleSubmit }>
+        <Form size='w-4/12' title='Login' handleSubmit={ handleSubmit }>
             <InputField 
                 label='User'
                 id='user'
