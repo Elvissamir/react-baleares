@@ -15,9 +15,11 @@ const getUsers = () => {
     return httpService.get(usersEndpoint)
 }
 
+const createUser = data => {
+    return httpService.post(usersEndpoint, data)
+}
+
 const deleteUser = userName => {
-    console.log(userName)
-    console.log(`${usersEndpoint}/${{userName}}`)
     return httpService.delete(`${usersEndpoint}/${userName}`)
 }
 
@@ -25,5 +27,6 @@ export {
     register,
     login,
     getUsers,
+    createUser, 
     deleteUser
 }
