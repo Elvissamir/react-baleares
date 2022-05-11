@@ -13,7 +13,8 @@ function EditUserForm () {
     const navigate = useNavigate()
     const { state: { user } } = useLocation()
 
-    const [isChecked, setIsChecked] = useState(false)
+    const initialChecked = user.roles && user.roles.length > 0
+    const [isChecked, setIsChecked] = useState(initialChecked)
 
     const dataInit = {
         user: user.user,
@@ -61,7 +62,7 @@ function EditUserForm () {
         let temp = {...formData}
         !isChecked? temp.roles.push(roleOption) : temp.roles.pop()
         setFormData(temp)
-     };
+    };
 
     return (
         <div className='content-wrapper'>
