@@ -7,6 +7,7 @@ import routes from '../routes';
 import NotFound from './NotFound';
 import Forbidden from './Forbidden';
 import ImageForm from './ImageForm';
+import EditUserForm from './EditUserForm'
 
 function Router() {
     return (
@@ -33,7 +34,13 @@ function Router() {
                     admin={true}>
                     <UsersPage />
                 </RequireAuth>} />
-            <Route path={routes.admin.users.url} element={<UsersPage />} />
+            <Route path={routes.admin.editUser.url} element={
+                <RequireAuth 
+                    redirectTo={routes.general.login.url} 
+                    destination={routes.auth.options.url}
+                    admin={false}>
+                        <EditUserForm />
+                </RequireAuth>} />
             <Route path='/forbidden' element={ <Forbidden /> } />
             <Route path='*' element={ <NotFound /> } />
         </Routes>

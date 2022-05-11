@@ -8,7 +8,9 @@ const auth = {
 }
 
 const admin = {
-    users: { name: 'Users', url: '/users' }
+    users: { name: 'Users', url: '/users' },
+    createUser: { name: 'Create User', url: '/users/create' },
+    editUser: { name: 'Edit User', url: '/users/edit' }
 }
 
 const getAdminArr = function () {

@@ -16,7 +16,9 @@ const getUsers = () => {
 }
 
 const deleteUser = userName => {
-    return httpService.delete(`${usersEndpoint}/${{userName}}`)
+    console.log(userName)
+    console.log(`${usersEndpoint}/${{userName}}`)
+    return httpService.delete(`${usersEndpoint}/${userName}`)
 }
 
 export {
