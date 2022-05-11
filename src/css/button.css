@@ -12,3 +12,8 @@
     color: white;
     box-shadow: 1px 1px 3px rgba(10, 10, 10, 0.7);
 }
+
+.action-button:hover {
+    color: white;
+    background-color: rgba(0, 50, 150, 1);
+}

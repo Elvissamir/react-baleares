@@ -68,9 +68,6 @@ function LoginForm () {
                 handleChange={ handleChange } />
             <FormFooter>
                 <FormButton text='Login' validate={ validate } />
-                <a className="inline-block align-baseline text-sm text-blue-500 hover:text-blue-800" href="/">
-                    Forgot Password?
-                </a>
             </FormFooter>
         </Form>
     )

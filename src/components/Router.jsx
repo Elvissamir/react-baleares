@@ -9,10 +9,12 @@ import Forbidden from './Forbidden';
 import ImageForm from './ImageForm';
 import CreateUserForm from './CreateUserForm';
 import EditUserForm from './EditUserForm'
+import Welcome from './Welcome';
 
 function Router() {
     return (
         <Routes>
+            <Route path='/' element={<Welcome />} />
             <Route path={routes.general.login.url} element={<LoginForm />} />
             <Route path={routes.auth.options.url} element={
                 <RequireAuth 

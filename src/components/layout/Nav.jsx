@@ -15,7 +15,7 @@ function Nav () {
             generalLinks.map(item =>      
                 <li className="flex" key={ item.name }>
                     <NavLink 
-                        className="menu-link" 
+                        className="button action-button" 
                         to={ item.url }>
                             { item.name }
                     </NavLink>
@@ -37,7 +37,7 @@ function Nav () {
     return (
         <nav className="nav">
             <div className="nav-content">
-                <div className="font-black">BALEARES APP</div>
+                <div className="font-black">User-Images APP</div>
                 <div className="menu-wrapper">
                     <ul className="menu">
                         { currentUser?.isAdmin && adminLinks.map(link => 
