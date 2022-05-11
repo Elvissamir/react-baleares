@@ -1,24 +1,20 @@
 import Joi from 'joi'
 import useForm from './hooks/useForm'
-import { login } from '../services/usersService';
-import { useContext } from 'react';
-import { UserContext } from './context/userContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Form from './common/Form';
 import InputField from './common/InputField';
 import FormFooter from './common/FormFooter';
 import FormButton from './common/FormButton';
+import { updateUser } from '../services/usersService';
 import routes from '../routes';
 
 function EditUserForm () {
     const navigate = useNavigate()
-
-    const currentUser = useLocation()
-    console.log(currentUser)
+    const { state: { user } } = useLocation()
 
     const dataInit = {
-        user: '',
-        password: ''
+        user: user.user,
+        password: user.password
     }
 
     const dataSchema = {
@@ -38,7 +34,7 @@ function EditUserForm () {
         e.preventDefault()
 
         try {
-            
+            await updateUser(dataInit.user, formData)
             navigate(routes.admin.users.url, { replace: true })
         } 
            
@@ -52,28 +48,27 @@ function EditUserForm () {
     }
 
     return (
-        <Form size='w-6/12' title='Login' handleSubmit={ handleSubmit }>
-            <InputField 
-                label='User'
-                id='user'
-                type='text'
-                value={ formData.user }
-                error={ formErrors.user }
-                handleChange={ handleChange } />
-            <InputField 
-                label='Password'
-                id='password'
-                type='password'
-                value={ formData.password }
-                error={ formErrors.password }
-                handleChange={ handleChange } />
-            <FormFooter>
-                <FormButton text='Login' validate={ validate } />
-                <a className="inline-block align-baseline text-sm text-blue-500 hover:text-blue-800" href="/">
-                    Forgot Password?
-                </a>
-            </FormFooter>
-        </Form>
+        <div className='content-wrapper'>
+            <Form size='w-6/12' title='Edit User' handleSubmit={ handleSubmit }>
+                <InputField 
+                    label='User'
+                    id='user'
+                    type='text'
+                    value={ formData.user }
+                    error={ formErrors.user }
+                    handleChange={ handleChange } />
+                <InputField 
+                    label='Password'
+                    id='password'
+                    type='password'
+                    value={ formData.password }
+                    error={ formErrors.password }
+                    handleChange={ handleChange } />
+                <FormFooter>
+                    <FormButton text='Update' validate={ validate } />
+                </FormFooter>
+            </Form>
+        </div>
     )
 }
 

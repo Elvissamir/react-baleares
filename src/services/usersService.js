@@ -19,6 +19,10 @@ const createUser = data => {
     return httpService.post(usersEndpoint, data)
 }
 
+const updateUser = (userName, data) => {
+    return httpService.put(`${usersEndpoint}/${userName}`, data)
+}
+
 const deleteUser = userName => {
     return httpService.delete(`${usersEndpoint}/${userName}`)
 }
@@ -28,5 +32,6 @@ export {
     login,
     getUsers,
     createUser, 
+    updateUser,
     deleteUser
 }
