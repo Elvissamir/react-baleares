@@ -69,7 +69,6 @@ function ImageForm () {
                         handleChange={ handleChange } />
                     
                     <input type="file" name='image' onChange={handleImageChange} />
-
                     <FormFooter>
                         <FormButton text='Upload' validate={ validate } />
                     </FormFooter>

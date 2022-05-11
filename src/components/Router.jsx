@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import OptionsPage from './OptionsPage';
 import RequireAuth from './RequireAuth';
@@ -25,6 +25,13 @@ function Router() {
                     destination={routes.auth.uploadImage.url}
                     admin={false}>
                     <ImageForm />
+                </RequireAuth>} />
+            <Route path={routes.admin.users.url} element={
+                <RequireAuth 
+                    redirectTo={routes.general.login.url}
+                    destination={routes.admin.users.url}
+                    admin={true}>
+                    <UsersPage />
                 </RequireAuth>} />
             <Route path={routes.admin.users.url} element={<UsersPage />} />
             <Route path='/forbidden' element={ <Forbidden /> } />

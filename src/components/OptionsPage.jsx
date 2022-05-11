@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useContext } from "react"
 import { UserContext } from "./context/userContext"
 import { NavLink } from 'react-router-dom';
@@ -7,7 +6,6 @@ import imageService from '../services/imageService';
 import routes from '../routes';
 
 function OptionsPage () {
-    const navigate = useNavigate()
     const { currentUser } = useContext(UserContext)
     const [images, setImages] = useState([])
 
@@ -40,7 +38,7 @@ function OptionsPage () {
 
     return (
         <div className="content-wrapper">
-            <p className='text-3xl font-bold'>Options page</p>
+            <p className='title'>Options page</p>
             <div className='mt-3'>
                 <NavLink className='action-button p-2' to={ routes.auth.uploadImage.url }>
                     Upload Image

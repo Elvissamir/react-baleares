@@ -11,7 +11,12 @@ function login ({ user, password }) {
     return httpService.post(loginEndpoint, { user, password })
 }
 
+function getUsers () {
+    return httpService.get(usersEndpoint)
+}
+
 export {
     register,
     login,
+    getUsers
 }
